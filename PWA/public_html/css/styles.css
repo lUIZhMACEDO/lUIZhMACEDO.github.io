@@ -1,0 +1,123 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0; 
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #00feba, #5b548a);
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background: transparent;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+h1 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    z-index: 3;
+    background: transparent;
+}
+
+.rectangle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(135deg, #00feba, #5b548a);
+    color: #fff;
+    z-index: 2;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.fixed-date {
+    position: fixed;
+    top: 150px;
+    left: 10px;
+    font-size: 2em;
+    margin: 0;
+    z-index: 100;
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+#locationInput, #searchBtn {
+    margin: 5px;
+}
+
+#locationInput {
+    flex-grow: 1;
+    margin-right: 10px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 5px solid #5b548a;
+    border-radius: 20px;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#locationInput:focus {
+    border-color: #00feba;
+    box-shadow: 0 0 8px rgba(0, 254, 186, 0.5);
+}
+
+#searchBtn {
+    padding: 10px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    cursor: pointer;
+}
+
+#searchBtn img {
+    width: 40px;
+}
+
+.weather {
+    position: absolute;
+    top: 20em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    z-index: 10;
+}
+
+.weather h3, .weather h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4em;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.weather h4 {
+    margin-left: 10px;
+}
