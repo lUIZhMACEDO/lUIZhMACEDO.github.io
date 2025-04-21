@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier League Database - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <section class="project-detail">
+        <h1>Premier League Database Table</h1>
+        <div class="project-content">
+            <div class="project-description">
+                <h2>SQL</h2>
+                <p>Designed and implemented a database system to manage over 20,000 data sets from Kaggle, covering every match in the Premier League era 1992-Present. (English Soccer League)</p>
+                <p>I applied a datatable from kaggle that was instructed to include all the matches from the Premier League up to the current data. I addressed the challenge of counting wins, losses,
+                     and draws by creating a custom function to interpret the FTR (Full Time Result) column, which only indicated H (Home win), D (Draw), and A (Away win).</p>
+                <p>By making:</p>
+                <ul>
+                    <li>Home win = 1 win for home and 1 loss for away</li>
+                    <li>Draw = 1 draw for both teams</li>
+                    <li>Away win = loss for home team and 1 win for away team</li>
+                </ul>
+                <p>The database counts all of these wins, draws, and scores and organizes the data into a table to represent the teams with the best home records and best away recrods, as well as overall most wins. </p>
+                <p>Created a stored procedure named UpdateTeamStats to synchronize the GoalsScored and GoalsConceded columns across the HomeTeam and AwayTeam tables, ensuring data integrity and accuracy.</p>
+                <p>Implemented a database trigger named UpdateTeamStatsTrigger that automatically executes the UpdateTeamStats procedure after any insert or update operation on the relevant tables, enhancing data management.</p>
+            </div>
+            <div class="project-images">
+                <img src="DBproject/image (1).png" alt="Database Image 1">
+                <img src="DBproject/image (2).png" alt="Database Image 2">
+                <img src="DBproject/image (3).png" alt="Database Image 3">
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html> 
