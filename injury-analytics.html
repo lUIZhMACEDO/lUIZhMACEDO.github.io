@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier League Injury Analytics Dashboard - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div class="mobile-menu">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <canvas id="data-particles"></canvas>
+
+    <section class="project-detail">
+        <h1>Premier League Injury Analytics Dashboard</h1>
+        <div class="project-content">
+            <div class="project-description">
+                <h2>Overview</h2>
+                <p><strong>Status: Work in Progress</strong></p>
+                <p>I built an end-to-end analytics project using a Kaggle dataset of Premier League player-season injuries from the 2020/21, 2021/22, and 2022/23 seasons. I cleaned the data in PostgreSQL and then connected it to Tableau Public to design a dashboard.</p>
+                
+                <h2>Project Details</h2>
+                <p>The dashboard explores how player height, age, weight, BMI, and minutes played relate to days missed through injury, using:</p>
+                <ul>
+                    <li>Binned bar charts for categorical comparisons</li>
+                    <li>KPI cards showing average days injured, number of injured player-seasons, and percentage with prior significant injury</li>
+                </ul>
+
+                <h2>Key Findings</h2>
+                <p>The key takeaway from this first version is that within this dataset, there is no strong, simple link between height/weight/BMI and time lost to injury, while age and minutes played behave more as expected (older players and players with fewer minutes tend to carry higher injury loads).</p>
+
+                <h2>Future Plans</h2>
+                <p>This project is my starting point for soccer analytics. Next, I plan to:</p>
+                <ul>
+                    <li>Learn web scraping with Python using <strong>requests</strong> and <strong>BeautifulSoup</strong></li>
+                    <li>Scrape fresh Premier League data from Transfermarkt</li>
+                    <li>Join it with injury information</li>
+                    <li>Rebuild the dashboard with newer seasons and richer features (e.g., xG, position-specific metrics)</li>
+                </ul>
+
+                <h2>Technologies Used</h2>
+                <ul>
+                    <li><strong>PostgreSQL:</strong> Data cleaning and normalization</li>
+                    <li><strong>Tableau Public:</strong> Dashboard creation and visualization</li>
+                    <li><strong>SQL:</strong> Data querying and analysis</li>
+                    <li><strong>Python (Planned):</strong> Web scraping and ETL pipeline development</li>
+                </ul>
+            </div>
+
+            <div class="project-images">
+                <h3>Project Visualizations</h3>
+                <div class="image-grid">
+                    <div class="image-container main-image">
+                        <div class="image-wrapper">
+                            <img src="DB CHARTS.png" alt="Dashboard Charts">
+                            <div class="image-overlay">
+                                <span>View Full Size</span>
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h4>Tableau Dashboard Visualizations</h4>
+                            <p>Charts showing relationships between player attributes and injury patterns.</p>
+                        </div>
+                    </div>
+                    <div class="image-container image-same-height">
+                        <div class="image-wrapper">
+                            <img src="data sql.png" alt="SQL Data Structure">
+                            <div class="image-overlay">
+                                <span>View Full Size</span>
+                            </div>
+                        </div>
+                        <div class="image-caption">
+                            <h4>PostgreSQL Database Structure</h4>
+                            <p>Data schema and structure used for cleaning and organizing the injury dataset.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="social-footer">
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/luiz-macedo-cs1/" target="_blank" class="social-icon">
+                <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
