@@ -1,12 +1,12 @@
 // Typing effect
-const text = "Data Scientist";
+const text = "Data Analyst";
 const typingText = document.querySelector('.typing-text');
 let i = 0;
 let isTyping = true;
 
 function typeWriter() {
     if (i < text.length) {
-        typingText.textContent += text.charAt(i);
+        typingText.textContent = text.substring(0, i + 1);
         i++;
         setTimeout(typeWriter, 100);
     } else {
@@ -16,7 +16,7 @@ function typeWriter() {
 
 function eraseText() {
     if (i > 0) {
-        typingText.textContent = text.substring(0, i-1);
+        typingText.textContent = text.substring(0, i - 1);
         i--;
         setTimeout(eraseText, 50);
     } else {
@@ -27,8 +27,8 @@ function eraseText() {
 // Start typing effect when page loads
 window.addEventListener('load', () => {
     if (typingText) {
-    typingText.textContent = ''; // Clear any existing text
-    typeWriter();
+        typingText.textContent = ''; // Clear any existing text
+        typeWriter();
     }
 });
 
@@ -132,7 +132,7 @@ function animateCounter(element, target, duration = 2000) {
 
 // Intersection Observer for Counter Animation
 function initCounters() {
-    const statCards = document.querySelectorAll('.stat-card');
+    const statCards = document.querySelectorAll('.stat-card, .stat-card-large');
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -156,7 +156,7 @@ let chartsInitialized = false;
 function initCharts() {
     if (chartsInitialized) return;
     
-    const chartSection = document.querySelector('.data-viz-section');
+    const chartSection = document.querySelector('.combined-section') || document.querySelector('.data-viz-section');
     if (!chartSection) return;
     
     const observer = new IntersectionObserver((entries) => {
@@ -178,22 +178,22 @@ function createCharts() {
         new Chart(languagesCtx, {
             type: 'doughnut',
             data: {
-                labels: ['Python', 'JavaScript', 'Java', 'SQL', 'HTML/CSS'],
+                labels: ['Python', 'SQL', 'HTML/CSS', 'JavaScript', 'Java'],
                 datasets: [{
-                    data: [35, 25, 20, 15, 5],
+                    data: [30, 25, 25, 12, 8],
                     backgroundColor: [
-                        'rgba(255, 255, 0, 0.8)',
-                        'rgba(0, 254, 186, 0.8)',
-                        'rgba(255, 100, 100, 0.8)',
-                        'rgba(100, 150, 255, 0.8)',
-                        'rgba(200, 100, 255, 0.8)'
+                        'rgba(255, 255, 0, 0.8)',      // Python - Yellow
+                        'rgba(100, 150, 255, 0.8)',    // SQL - Blue
+                        'rgba(200, 100, 255, 0.8)',    // HTML/CSS - Purple
+                        'rgba(0, 254, 186, 0.8)',      // JavaScript - Teal
+                        'rgba(255, 100, 100, 0.8)'     // Java - Red
                     ],
                     borderColor: [
-                        'rgba(255, 255, 0, 1)',
-                        'rgba(0, 254, 186, 1)',
-                        'rgba(255, 100, 100, 1)',
-                        'rgba(100, 150, 255, 1)',
-                        'rgba(200, 100, 255, 1)'
+                        'rgba(255, 255, 0, 1)',        // Python
+                        'rgba(100, 150, 255, 1)',      // SQL
+                        'rgba(200, 100, 255, 1)',      // HTML/CSS
+                        'rgba(0, 254, 186, 1)',        // JavaScript
+                        'rgba(255, 100, 100, 1)'       // Java
                     ],
                     borderWidth: 2
                 }]
@@ -208,117 +208,49 @@ function createCharts() {
                             color: 'white',
                             font: {
                                 size: 12
+                            },
+                            generateLabels: function(chart) {
+                                const data = chart.data;
+                                if (data.labels.length && data.datasets.length) {
+                                    const dataset = data.datasets[0];
+                                    const total = dataset.data.reduce((a, b) => a + b, 0);
+                                    return data.labels.map((label, i) => {
+                                        const value = dataset.data[i];
+                                        const percentage = ((value / total) * 100).toFixed(0);
+                                        return {
+                                            text: `${label}: ${percentage}%`,
+                                            fillStyle: dataset.backgroundColor[i],
+                                            strokeStyle: dataset.borderColor[i],
+                                            lineWidth: dataset.borderWidth,
+                                            hidden: false,
+                                            index: i,
+                                            fontColor: 'white'
+                                        };
+                                    });
+                                }
+                                return [];
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        titleColor: 'white',
+                        bodyColor: 'white',
+                        borderColor: 'rgba(255, 255, 0, 0.5)',
+                        borderWidth: 1,
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed || 0;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(0);
+                                return `${label}: ${percentage}%`;
                             }
                         }
                     }
                 },
                 animation: {
                     animateRotate: true,
-                    duration: 2000
-                }
-            }
-        });
-    }
-    
-    // Data Science Tools Chart
-    const toolsCtx = document.getElementById('toolsChart');
-    if (toolsCtx) {
-        new Chart(toolsCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Pandas', 'NumPy', 'Matplotlib', 'Scikit-learn', 'SQL'],
-                datasets: [{
-                    label: 'Proficiency',
-                    data: [90, 85, 80, 75, 90],
-                    backgroundColor: 'rgba(255, 255, 0, 0.6)',
-                    borderColor: 'rgba(255, 255, 0, 1)',
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 100,
-                        ticks: {
-                            color: 'white'
-                        },
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            color: 'white'
-                        },
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        }
-                    }
-                },
-                animation: {
-                    duration: 2000
-                }
-            }
-        });
-    }
-    
-    // Project Types Chart
-    const projectsCtx = document.getElementById('projectsChart');
-    if (projectsCtx) {
-        new Chart(projectsCtx, {
-            type: 'line',
-            data: {
-                labels: ['Web Dev', 'Data Analysis', 'ML/AI', 'Database', 'Analytics'],
-                datasets: [{
-                    label: 'Project Focus',
-                    data: [30, 40, 35, 25, 45],
-                    borderColor: 'rgba(255, 255, 0, 1)',
-                    backgroundColor: 'rgba(255, 255, 0, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: 'rgba(255, 255, 0, 1)',
-                    pointBorderColor: 'white',
-                    pointBorderWidth: 2,
-                    pointRadius: 6
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            color: 'white'
-                        },
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            color: 'white'
-                        },
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        }
-                    }
-                },
-                animation: {
                     duration: 2000
                 }
             }
@@ -511,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('data-particles')) {
         initParticles();
     }
-    if (document.querySelector('.stat-card')) {
+    if (document.querySelector('.stat-card') || document.querySelector('.stat-card-large')) {
         initCounters();
     }
     if (document.getElementById('languagesChart')) {

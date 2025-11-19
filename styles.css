@@ -303,15 +303,9 @@ body {
     font-size: 1.8rem;
     border-right: 2px solid white;
     white-space: nowrap;
-    overflow: hidden;
-    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    overflow: visible;
     display: inline-block;
-    min-width: 200px;
-}
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+    animation: blink-caret 0.75s step-end infinite;
 }
 
 @keyframes blink-caret {
@@ -1280,6 +1274,26 @@ footer {
     filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.5));
 }
 
+.skill-icon-custom {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.8s ease;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 0, 0.3));
+}
+
+.skill-item:hover .skill-icon-custom {
+    transform: scale(1.1) rotate(180deg);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.5));
+}
+
+.skill-icon-custom svg {
+    width: 100%;
+    height: 100%;
+}
+
 .skill-item span {
     font-size: 1.1rem;
     color: white;
@@ -1835,6 +1849,70 @@ footer {
     margin-top: 3rem;
 }
 
+.combined-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.stat-card-large {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.stat-card-large::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 0, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.stat-card-large:hover::before {
+    opacity: 1;
+}
+
+.stat-card-large:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: yellow;
+    box-shadow: 0 10px 30px rgba(255, 255, 0, 0.2);
+}
+
+.stat-card-large .stat-icon {
+    font-size: 4rem;
+    color: yellow;
+    margin-bottom: 1.5rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.stat-card-large .stat-number {
+    font-size: 4.5rem;
+    font-weight: bold;
+    color: white;
+    margin: 1.5rem 0;
+    font-family: 'Courier New', monospace;
+}
+
+.stat-card-large .stat-label {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 .stat-card {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1978,6 +2056,26 @@ footer {
     max-height: 300px;
 }
 
+/* Chart.js legend text color - target legend specifically */
+.chart-card canvas + div,
+.chart-card div[style*="position: relative"],
+.chart-card > div:not(:first-child) {
+    color: white !important;
+}
+
+.chart-card .chartjs-legend,
+.chart-card ul,
+.chart-card ul li,
+.chart-card ul li span {
+    color: white !important;
+}
+
+/* Ensure legend items are white */
+.chart-card div[style*="display: flex"] li,
+.chart-card div[style*="display: flex"] span {
+    color: white !important;
+}
+
 @media screen and (max-width: 768px) {
     .section-title {
         font-size: 2rem;
@@ -2002,5 +2100,26 @@ footer {
 
     .chart-card {
         padding: 1.5rem;
+    }
+
+    .combined-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .stat-card-large {
+        padding: 2.5rem 2rem;
+    }
+
+    .stat-card-large .stat-icon {
+        font-size: 3rem;
+    }
+
+    .stat-card-large .stat-number {
+        font-size: 3.5rem;
+    }
+
+    .stat-card-large .stat-label {
+        font-size: 1.2rem;
     }
 } 
