@@ -1,34 +1,35 @@
-// Typing effect
-const text = "Data Analyst";
+// Typing effect -- cycles through multiple roles
+const roles = ["Data Analyst", "Python Developer", "Data Engineer", "Full-Stack Builder"];
 const typingText = document.querySelector('.typing-text');
-let i = 0;
-let isTyping = true;
+let roleIndex = 0;
+let charIndex = 0;
 
-function typeWriter() {
-    if (i < text.length) {
-        typingText.textContent = text.substring(0, i + 1);
-        i++;
-        setTimeout(typeWriter, 100);
+function typeRole() {
+    const current = roles[roleIndex];
+    if (charIndex < current.length) {
+        typingText.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
+        setTimeout(typeRole, 100);
     } else {
-        setTimeout(eraseText, 2000);
+        setTimeout(eraseRole, 2000);
     }
 }
 
-function eraseText() {
-    if (i > 0) {
-        typingText.textContent = text.substring(0, i - 1);
-        i--;
-        setTimeout(eraseText, 50);
+function eraseRole() {
+    if (charIndex > 0) {
+        typingText.textContent = roles[roleIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseRole, 50);
     } else {
-        setTimeout(typeWriter, 500);
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(typeRole, 400);
     }
 }
 
-// Start typing effect when page loads
 window.addEventListener('load', () => {
     if (typingText) {
-        typingText.textContent = ''; // Clear any existing text
-        typeWriter();
+        typingText.textContent = '';
+        typeRole();
     }
 });
 
