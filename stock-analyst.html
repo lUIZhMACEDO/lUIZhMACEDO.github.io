@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Stock Analyst - A full-stack portfolio analysis tool with technical indicators, signals, and automated email reports.">
+    <title>AI Stock Analyst - Luiz Macedo Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .app-embed-section {
+            width: 100vw;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            padding: 2rem 0;
+            background: #0b0e11;
+            overflow: hidden;
+        }
+        .app-embed-section h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #f0b90b;
+            margin-bottom: 0.5rem;
+        }
+        .app-embed-section p {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        .app-embed-section .embed-frame {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .app-embed-section iframe {
+            width: 100%;
+            height: 850px;
+            border: 2px solid #1e2533;
+            border-radius: 12px;
+            background: #0b0e11;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1.5rem 0;
+        }
+        .tech-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(240, 185, 11, 0.1);
+            border: 1px solid rgba(240, 185, 11, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #f0b90b;
+            font-weight: 600;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .feature-card {
+            background: #141821;
+            border: 1px solid #1e2533;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .feature-card i {
+            font-size: 1.5rem;
+            color: #f0b90b;
+            margin-bottom: 10px;
+        }
+        .feature-card h4 {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .feature-card p {
+            color: #6b7280;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        .project-links {
+            display: flex;
+            gap: 16px;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: #f0b90b;
+            color: #0b0e11;
+        }
+        .btn-primary:hover {
+            background: #d4a30a;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid #1e2533;
+        }
+        .btn-secondary:hover {
+            border-color: #f0b90b;
+            color: #f0b90b;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+            .app-embed-section iframe { height: 600px; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div class="mobile-menu">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <canvas id="data-particles"></canvas>
+
+    <section class="project-detail">
+        <h1>AI Stock Analyst</h1>
+        <div class="project-content">
+            <div class="project-description">
+                <h2>Overview</h2>
+                <p>I built this full-stack stock analysis platform that lets anyone enter their portfolio and instantly receive institutional-grade analysis. Users input their stock tickers, share counts, and average costs, then the system pulls live data from multiple financial APIs to generate personalized BUY/SELL/HOLD signals, compute technical indicators, fetch analyst ratings, assess portfolio risk, and deliver a full professional report to their email.</p>
+
+                <div class="project-links">
+                    <a href="https://ai-stock-analyst-io.streamlit.app/" target="_blank" class="btn-primary">
+                        <i class="fas fa-rocket"></i> Try It Live
+                    </a>
+                    <a href="https://github.com/lUIZhMACEDO/ai-stock-analyst" target="_blank" class="btn-secondary">
+                        <i class="fab fa-github"></i> View Source Code
+                    </a>
+                </div>
+
+                <h2>Tech Stack</h2>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">yfinance</span>
+                    <span class="tech-tag">Finnhub API</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">TA-Lib</span>
+                    <span class="tech-tag">Google News RSS</span>
+                    <span class="tech-tag">SMTP / Gmail</span>
+                    <span class="tech-tag">GitHub Actions</span>
+                    <span class="tech-tag">Streamlit Cloud</span>
+                </div>
+            </div>
+
+            <!-- LIVE APP EMBED -->
+            <section class="app-embed-section">
+                <h3><i class="fas fa-chart-line" style="margin-right:10px;"></i>Live Application</h3>
+                <p><i class="fas fa-info-circle" style="color:#f0b90b;margin-right:5px;"></i>Enter your stocks directly below to try it. The app runs live.</p>
+                <div class="embed-frame">
+                    <iframe src="https://ai-stock-analyst-io.streamlit.app/?embedded=true"
+                            allow="clipboard-write"
+                            loading="lazy"
+                            title="AI Stock Analyst"></iframe>
+                </div>
+            </section>
+
+            <div class="project-description">
+                <h2>Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-signal"></i>
+                        <h4>Smart Signals</h4>
+                        <p>Per-ticker BUY/SELL/HOLD/TRIM signals based on P&L thresholds, PE ratios, RSI levels, 52-week positioning, and ticker-specific strategies for different asset classes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <h4>Technical Indicators</h4>
+                        <p>Real-time RSI, MACD, Bollinger Bands, EMA 20/50 crossovers, ATR-based stop-loss and target levels, and volume analysis vs 20-day average.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-users"></i>
+                        <h4>Analyst Ratings</h4>
+                        <p>Aggregated Buy/Hold/Sell counts from Wall Street analysts, consensus price targets (low/mean/high), and 30-day insider buy/sell transaction tracking via Finnhub.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Risk Dashboard</h4>
+                        <p>Portfolio-level weighted beta, sector exposure breakdown, per-position 1-day risk, and 95% Value at Risk (VaR) calculation using historical volatility.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h4>Timeline Analysis</h4>
+                        <p>Short-term (0-30d), medium-term (1-6mo), and long-term (6-24mo) outlook with support/resistance levels, earnings catalysts, and invalidation triggers.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email Reports</h4>
+                        <p>Full HTML report delivered to the user's inbox with the same dark-themed professional layout, including all charts, signals, technicals, and risk data.</p>
+                    </div>
+                </div>
+
+                <h2>How It Works</h2>
+                <p>The system pulls data from multiple sources with automatic fallbacks:</p>
+                <ul>
+                    <li><strong>Yahoo Finance (yfinance):</strong> Live prices, historical OHLCV data, company fundamentals (PE, market cap, 52-week range), and earnings dates.</li>
+                    <li><strong>Finnhub API:</strong> Analyst consensus recommendations, price targets, insider transactions, earnings calendar, and general market news with rate limiting.</li>
+                    <li><strong>Google News RSS:</strong> Deduplicated headlines per ticker and macro-level news scanning with keyword-based risk flagging for portfolio-relevant events.</li>
+                    <li><strong>TA Library:</strong> RSI (14-period), MACD (12/26/9), Bollinger Bands (20, 2-std), EMA 20/50 crossovers, and ATR (14-period) computed from 6-month daily history.</li>
+                </ul>
+                <p>All data is cached for 30 minutes, API calls include timeout handling and graceful degradation, and Finnhub requests are rate-limited at 0.3s intervals to respect free-tier limits.</p>
+
+                <h2>Architecture</h2>
+                <ul>
+                    <li><strong>main.py</strong> -- Core analysis engine: 1,200+ lines handling data fetching, caching, indicator computation, signal generation, trade strategy detection, risk math, and HTML email builder.</li>
+                    <li><strong>app.py</strong> -- Streamlit frontend: Public-facing input form, portfolio analysis, interactive dashboard with 4 tabs (Portfolio, Trade Ideas, Technicals, Risk & News), and email delivery.</li>
+                    <li><strong>GitHub Actions</strong> -- Automated CI/CD: Daily scheduled runs (Mon-Fri 7:30 AM EST) that execute the full analysis pipeline and send email reports without requiring the host machine.</li>
+                    <li><strong>Streamlit Cloud</strong> -- Zero-config deployment: Connected to the GitHub repo for automatic deploys on every push, with secrets managed through the platform.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="social-footer">
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/luiz-macedo-cs1/" target="_blank" class="social-icon">
+                <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
