@@ -443,6 +443,20 @@ body {
     padding: 2rem;
 }
 
+/* Home page: 2 projects only, centered, no stretching */
+.project-grid-two {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+    .project-grid-two {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+}
+
 .project-card {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
@@ -562,6 +576,119 @@ body {
     font-size: 11px;
     color: #8b949e;
     margin-top: 4px;
+}
+
+/* Candle site card visual */
+.project-card-candle-visual {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #4a2c2a, #6b3a36);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.project-card-candle-visual i {
+    font-size: 48px;
+    color: #f67280;
+    margin-bottom: 12px;
+}
+
+.project-card-candle-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.project-card-candle-badge {
+    font-size: 11px;
+    color: #f8a5a5;
+    margin-top: 4px;
+}
+
+/* Article card visual */
+.project-card-article-visual {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #1e3a5f, #2d5a87);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.project-card-article-visual i {
+    font-size: 48px;
+    color: #60a5fa;
+    margin-bottom: 12px;
+}
+
+.project-card-article-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.project-card-article-badge {
+    font-size: 11px;
+    color: #93c5fd;
+    margin-top: 4px;
+}
+
+/* Home page articles section */
+.home-articles {
+    max-width: 900px;
+    margin: 2rem auto 0;
+    padding: 0 2rem;
+}
+
+.home-articles h3 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.article-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.home-articles .article-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.home-articles .article-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 0, 0.4);
+}
+
+.home-articles .article-card i {
+    font-size: 1.5rem;
+    color: #f0b90b;
+    margin-top: 2px;
+}
+
+.home-articles .article-card h4 {
+    color: #c0c0c0;
+    margin-bottom: 6px;
+}
+
+.home-articles .article-card p {
+    color: #b0b0b0;
+    font-size: 0.95rem;
+    margin: 0;
 }
 
 /* Soccer Analytics card visual */
@@ -1114,6 +1241,37 @@ footer {
 .project-description li {
     margin-bottom: 0.5rem;
     color: white;
+}
+
+.project-links {
+    display: flex;
+    gap: 16px;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.project-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+    border-color: #f0b90b;
+    color: #f0b90b;
+    transform: translateY(-2px);
 }
 
 .project-images {
