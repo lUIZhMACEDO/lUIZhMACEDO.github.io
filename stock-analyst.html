@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Stock Analyst - A full-stack portfolio analysis tool with technical indicators, signals, and automated email reports.">
+    <title>AI Stock Analyst - Luiz Macedo Portfolio</title>
+    <meta property="og:title" content="AI Stock Analyst - Luiz Macedo Portfolio">
+    <meta property="og:description" content="Full-stack stock analysis tool with BUY/SELL/HOLD signals, technical indicators, and email reports.">
+    <meta property="og:image" content="https://luizhmacedo.github.io/assets/images/Transparent_Luiz.png">
+    <meta property="og:url" content="https://luizhmacedo.github.io/stock-analyst.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .app-embed-section {
+            width: 100vw;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            padding: 2rem 0;
+            background: #0b0e11;
+            overflow: hidden;
+        }
+        .app-embed-section h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #f0b90b;
+            margin-bottom: 0.5rem;
+        }
+        .app-embed-section p {
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        .app-embed-section .embed-frame {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .app-embed-section iframe {
+            width: 100%;
+            height: 850px;
+            border: 2px solid #1e2533;
+            border-radius: 12px;
+            background: #0b0e11;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1.5rem 0;
+        }
+        .tech-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(240, 185, 11, 0.1);
+            border: 1px solid rgba(240, 185, 11, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #f0b90b;
+            font-weight: 600;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .feature-card {
+            background: #141821;
+            border: 1px solid #1e2533;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .feature-card i {
+            font-size: 1.5rem;
+            color: #f0b90b;
+            margin-bottom: 10px;
+        }
+        .feature-card h4 {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+        .feature-card p {
+            color: #6b7280;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        @media (max-width: 768px) {
+            .app-embed-section iframe { height: 600px; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Luiz Macedo</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <canvas id="data-particles"></canvas>
+
+    <section class="project-detail">
+        <h1>AI Stock Analyst</h1>
+        <div class="project-content">
+            <div class="project-description">
+                <h2>Overview</h2>
+                <p>I built this full-stack stock analysis platform that lets anyone enter their portfolio and instantly receive institutional-grade analysis. Users input their stock tickers, share counts, and average costs, then the system pulls live data from multiple financial APIs to generate personalized BUY/SELL/HOLD signals, compute technical indicators, fetch analyst ratings, assess portfolio risk, and deliver a full professional report to their email. The public app shows only the Analyze Stocks flow—visitors enter their own data with no access to any personal portfolio.</p>
+
+                <h2>Tech Stack</h2>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">yfinance</span>
+                    <span class="tech-tag">Finnhub API</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">TA-Lib</span>
+                    <span class="tech-tag">Google News RSS</span>
+                    <span class="tech-tag">SMTP / Gmail</span>
+                    <span class="tech-tag">Streamlit Cloud</span>
+                    <span class="tech-tag">Plotly</span>
+                </div>
+            </div>
+
+            <!-- LIVE APP EMBED -->
+            <section class="app-embed-section">
+                <h3><i class="fas fa-chart-line" style="margin-right:10px;"></i>Live Application</h3>
+                <p><i class="fas fa-info-circle" style="color:#f0b90b;margin-right:5px;"></i>Enter your stocks below to try it. Your data stays in your session—no personal portfolios are exposed.</p>
+                <div class="embed-frame">
+                    <iframe src="https://ai-stock-analyst-io.streamlit.app/?embedded=true"
+                            allow="clipboard-write"
+                            loading="lazy"
+                            title="AI Stock Analyst"></iframe>
+                </div>
+            </section>
+
+            <div class="project-description">
+                <h2>Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-signal"></i>
+                        <h4>Smart Signals</h4>
+                        <p>Per-ticker BUY/SELL/HOLD/TRIM signals based on P&L thresholds, PE ratios, RSI levels, and 52-week positioning.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <h4>Technical Indicators</h4>
+                        <p>Real-time RSI, MACD, Bollinger Bands, EMA crossovers, ATR-based stop-loss and target levels.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-users"></i>
+                        <h4>Analyst Ratings</h4>
+                        <p>Buy/Hold/Sell counts, consensus price targets, and insider transaction tracking via Finnhub.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Risk Dashboard</h4>
+                        <p>Portfolio beta, sector exposure, per-position risk, and 95% Value at Risk (VaR).</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email Reports</h4>
+                        <p>Full HTML report delivered to the user's inbox with charts, signals, technicals, and risk data.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-coins"></i>
+                        <h4>Crypto Tab</h4>
+                        <p>Fear & Greed Index, live BTC/ETH/SOL/BNB/XRP prices, and technical indicators.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="social-footer">
+        <div class="social-links">
+            <a href="https://github.com/lUIZhMACEDO" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-github fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/luiz-macedo-cs1/" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin fa-2x"></i></a>
+            <a href="mailto:luizhmacedo0@gmail.com" class="social-icon"><i class="fas fa-envelope fa-2x"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

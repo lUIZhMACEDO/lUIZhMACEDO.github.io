@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/Mobile.css">
+
+
+   <link rel="apple-touch-startup-image" href="SplashScreens/640_x_1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="SplashScreens/750_x_1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="SplashScreens/828_x_1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="SplashScreens/1125_x_2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="SplashScreens/1242_x_2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="SplashScreens/1536_x_2048.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="SplashScreens/1668_x_2224.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="SplashScreens/2048_x_2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)">
+    
+    
+    
+    
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/Favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Favicon/favicon-16x16.png">
+    <link rel="manifest" href="/Favicon/site.webmanifest">
+    <link rel="mask-icon" href="/Favicon/safari-pinned-tab.svg" color="#5bbad5">
+</head>
+<body>
+    <div class="rectangle"></div>
+    <h1> Weather App </h1>
+    <div class="weather">
+        <h3 class="city"> </h3>
+        <h4 class="temp"> </h4>
+    </div>
+    <div class="container">
+        <p id="currentDate" class="fixed-date"></p>
+        <div class="search-container">
+            <input type="text" id="locationInput" placeholder="Enter a city">
+            <button id="searchBtn" type="submit">
+                <img src="images/search.jpg" alt="Search">
+            </button>
+        </div>
+
+        <div class="weather-info">
+            <h2 id="location"></h2>
+            <p id="temperature"></p>
+            <p id="description"></p>
+        </div>
+    </div>
+    <script src="script/WeatherApi.js"></script>
+    <script src="script/script.js"></script>
+    <script src="script/app.js"></script>
+    <script src="/sw.js"></script>
+
+   
+    <div id="installBanner" style="display: none; position: fixed; bottom: 0; width: 100%; background: lightblue; padding: 10px; text-align: center;">
+        <p>Install this application on your home screen for a better experience. Tap <span aria-label="share icon">⬆️</span> and then 'Add to Home Screen'</p>
+        <button onclick="closeBanner()">Close</button>
+    </div>
+
+    <script>
+        function isIOS() {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            return /iphone|ipad|ipod/.test(userAgent);
+        }
+
+        function isInStandaloneMode() {
+            return ('standalone' in window.navigator) && (window.navigator.standalone);
+        }
+
+        function showInstallBanner() {
+            if (isIOS() &&!isInStandaloneMode()) {
+                document.getElementById('installBanner').style.display = 'block';
+            }
+        }
+
+        function closeBanner() {
+            document.getElementById('installBanner').style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', showInstallBanner);
+    </script>
+</body>
+</html>

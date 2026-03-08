@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luiz Macedo - Data Scientist Portfolio. Showcasing projects in data analytics, SQL, Tableau, and web development.">
+    <title>Luiz Macedo - Portfolio</title>
+    <meta property="og:title" content="Luiz Macedo - Portfolio">
+    <meta property="og:description" content="Data Science & Engineering student. Projects in data analytics, SQL, Tableau, and web development.">
+    <meta property="og:image" content="https://luizhmacedo.github.io/assets/images/Transparent_Luiz.png">
+    <meta property="og:url" content="https://luizhmacedo.github.io">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Luiz Macedo - Portfolio">
+    <meta name="twitter:description" content="Data Science & Engineering student. Projects in data analytics, SQL, Tableau, and web development.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Luiz Macedo</a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <canvas id="data-particles"></canvas>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hello-world">Data Science & Engineering Student</h1>
+                <p class="name-line">Luiz Macedo</p>
+                <p><span class="typing-text"></span></p>
+                <p>Welcome to my portfolio</p>
+                <div class="social-links-hero">
+                    <a href="https://www.linkedin.com/in/luiz-macedo-cs1/" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin fa-2x"></i>
+                    </a>
+                    <a href="mailto:luizhmacedo0@gmail.com" class="social-icon">
+                        <i class="fas fa-envelope fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/Transparent_Luiz.png" alt="Luiz Macedo" class="profile-picture">
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card project-card-featured">
+                <a href="stock-analyst.html">
+                    <div class="project-card-featured-visual">
+                        <i class="fas fa-chart-line"></i>
+                        <span class="project-card-featured-title">AI Stock Analyst</span>
+                        <span class="project-card-featured-badge">LIVE DASHBOARD</span>
+                    </div>
+                    <h3>AI Stock Analyst</h3>
+                    <p>Full-stack stock analysis tool with BUY/SELL/HOLD signals, technical indicators, risk dashboards, and automated email reports.</p>
+                </a>
+            </div>
+            <div class="project-card">
+                <a href="injury-analytics.html">
+                    <img src="EPL%20Project%20Pictures/EPLCoverPicture.png" alt="Premier League Injury Risk Dashboard">
+                    <h3>Premier League Injury Risk Dashboard (2022–2025)</h3>
+                    <p>Interactive Tableau dashboard analyzing player injury risks from 2022 to 2025. Explore relationships between player attributes, performance metrics, and injury patterns.</p>
+                </a>
+            </div>
+            <div class="project-card">
+                <a href="DBproject.html">
+                    <img src="DBproject/image.png" alt="Premier League Database">
+                    <h3>Premier League Database</h3>
+                    <p>SQL database system managing over 20,000 Premier League matches from 1992 to present, with custom functions and data integrity features.</p>
+                </a>
+            </div>
+            <div class="project-card">
+                <a href="soccerproject.html">
+                    <div class="project-card-soccer-visual">
+                        <i class="fas fa-futbol"></i>
+                        <span class="project-card-soccer-title">Soccer Analytics Platform</span>
+                        <span class="project-card-soccer-badge">IN DEVELOPMENT</span>
+                    </div>
+                    <h3>Soccer Analytics Platform</h3>
+                    <p>AI-powered soccer analytics platform in development. Data APIs, ML models for player performance, and intuitive visualizations.</p>
+                </a>
+            </div>
+            <div class="project-card">
+                <a href="https://github.com/lUIZhMACEDO" target="_blank" rel="noopener noreferrer">
+                    <div class="project-card-github-visual">
+                        <i class="fab fa-github"></i>
+                        <span class="project-card-github-title">View All Repositories</span>
+                        <span class="project-card-github-badge">GITHUB</span>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>Explore my code, contributions, and open-source projects. Python, SQL, JavaScript, and more.</p>
+                </a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="projects.html" class="cta-button">View All Projects →</a>
+        </div>
+    </section>
+
+    <!-- Combined Stats and Skills Section -->
+    <section class="data-stats-section">
+        <div class="container">
+            <div class="combined-section">
+                <div class="stat-card-large" data-target="5">
+                    <div class="stat-icon"><i class="fas fa-folder-open"></i></div>
+                    <div class="stat-number"><span class="counter">0</span>+</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="chart-card">
+                    <h3>Programming Languages</h3>
+                    <canvas id="languagesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="social-footer">
+        <div class="social-links">
+            <a href="https://github.com/lUIZhMACEDO" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-github fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/luiz-macedo-cs1/" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin fa-2x"></i></a>
+            <a href="mailto:luizhmacedo0@gmail.com" class="social-icon"><i class="fas fa-envelope fa-2x"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

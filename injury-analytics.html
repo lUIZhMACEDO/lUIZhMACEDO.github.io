@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premier League Injury Risk Dashboard (2022–2025) - Interactive Tableau dashboard analyzing player injury risks and patterns.">
+    <title>Premier League Injury Risk Dashboard (2022–2025) - Luiz Macedo Portfolio</title>
+    <meta property="og:title" content="Premier League Injury Risk Dashboard - Luiz Macedo Portfolio">
+    <meta property="og:description" content="Interactive Tableau dashboard analyzing player injury risks and patterns from 2022 to 2025.">
+    <meta property="og:image" content="https://luizhmacedo.github.io/assets/images/Transparent_Luiz.png">
+    <meta property="og:url" content="https://luizhmacedo.github.io/injury-analytics.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Luiz Macedo</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <canvas id="data-particles"></canvas>
+
+    <section class="project-detail">
+        <h1>Premier League Injury Risk Dashboard (2022–2025)</h1>
+        <div class="project-content">
+            <div class="project-description">
+                <h2>Overview</h2>
+                <p>I built this interactive Tableau dashboard to analyze Premier League player injury risks and patterns from 2022 to 2025. I wanted to explore how player attributes like age, height, and position relate to injury occurrences, so I could identify which factors put players at the highest risk.</p>
+            </div>
+
+            <!-- FULL-WIDTH SECTION JUST FOR TABLEAU -->
+            <section class="tableau-full-section">
+                <h3 class="tableau-title">Interactive Tableau Dashboard</h3>
+                <p class="tableau-subtitle">
+                    <i class="fas fa-info-circle" style="color: yellow; margin-right: 5px;"></i>
+                    Use the toolbar to zoom and interact. Click the fullscreen icon for best view.
+                </p>
+                <div id="tableau-viz-container"></div>
+            </section>
+            <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+            <script>
+                const container = document.getElementById('tableau-viz-container');
+                const url = 'https://public.tableau.com/views/Book1_17671353341480/Dashboard1?:embed=y&:toolbar=yes';
+
+                function initViz() {
+                    const options = {
+                        width: '100%',
+                        height: '100%',
+                        hideTabs: true,
+                        hideToolbar: false
+                    };
+                    window.dashboardViz = new tableau.Viz(container, url, options);
+                }
+
+                if (document.readyState === 'loading') {
+                    window.addEventListener('load', initViz);
+                } else {
+                    initViz();
+                }
+            </script>
+
+            <div class="project-description">
+                <h2>Individual Chart Visualizations</h2>
+                <p>I broke down the dashboard into individual charts so you can see each visualization in detail. Click on any chart below to view it in full size:</p>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-item">
+                    <div class="image-wrapper">
+                        <img src="EPL%20Project%20Pictures/EPL%20Injured%20Profiles.png" alt="Players profiles with the most injuries" class="chart-image" data-lightbox="charts">
+                        <div class="image-overlay">
+                            <span><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                        </div>
+                    </div>
+                    <div class="chart-caption">
+                        <h4>Players Profiles with the Most Injuries</h4>
+                        <p>I built this horizontal bar chart to compare player profiles by total injuries, using position, age range, and height. It highlights that centre-backs aged 24–31 and 184–189 cm are the group with the most injuries.</p>
+                    </div>
+                </div>
+                <div class="chart-item">
+                    <div class="image-wrapper">
+                        <img src="EPL%20Project%20Pictures/EPL%20Injuries%20Per%20Age%20Group.png" alt="Average amount of Injuries per age group" class="chart-image" data-lightbox="charts">
+                        <div class="image-overlay">
+                            <span><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                        </div>
+                    </div>
+                    <div class="chart-caption">
+                        <h4>Average Amount of Injuries per Age Group</h4>
+                        <p>I created this line chart to track how injuries change across age groups. It shows a sustained peak in injuries between ages 22–30, with another noticeable spike around age 35.</p>
+                    </div>
+                </div>
+                <div class="chart-item">
+                    <div class="image-wrapper">
+                        <img src="EPL%20Project%20Pictures/EPL%20Injuries%20Per%20height.png" alt="Injury by height (cm)" class="chart-image" data-lightbox="charts">
+                        <div class="image-overlay">
+                            <span><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                        </div>
+                    </div>
+                    <div class="chart-caption">
+                        <h4>Injury by Height (cm)</h4>
+                        <p>I used this bar chart to explore how injury risk varies by height. It reveals that players between 178–189 cm have the most injuries overall, with the 178–183 cm range standing out as the peak.</p>
+                    </div>
+                </div>
+                <div class="chart-item">
+                    <div class="image-wrapper">
+                        <img src="EPL%20Project%20Pictures/EPLInjuries%20Per%20Position.png" alt="Injuries per position" class="chart-image" data-lightbox="charts">
+                        <div class="image-overlay">
+                            <span><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                        </div>
+                    </div>
+                    <div class="chart-caption">
+                        <h4>Injuries per Position</h4>
+                        <p>I designed this bar chart to compare injuries across all positions. It makes it clear that centre-backs are the most affected, with 3,031 injuries—far more than any other role.</p>
+                    </div>
+                </div>
+                <div class="chart-item">
+                    <div class="image-wrapper">
+                        <img src="EPL%20Project%20Pictures/EPL%20most%20common%20injuries.png" alt="Most Common Injuries" class="chart-image" data-lightbox="charts">
+                        <div class="image-overlay">
+                            <span><i class="fas fa-search-plus"></i> Click to Zoom</span>
+                        </div>
+                    </div>
+                    <div class="chart-caption">
+                        <h4>Most Common Injuries</h4>
+                        <p>I built this horizontal bar chart to rank injury types by how often they occur. It shows that knee injuries, ankle injuries, and muscle injuries are the three most frequent issues players face.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-description">
+                <h2>About the Charts</h2>
+                <p>I created several different visualizations to explore different aspects of injury data:</p>
+                <ul>
+                    <li><strong>Injury Risk by Player Position:</strong> I analyzed how different playing positions correlate with injury frequency and severity to identify which roles are most vulnerable.</li>
+                    <li><strong>Age vs. Injury Patterns:</strong> I visualized the relationship between player age and injury occurrence to see how injury risk changes throughout a player's career.</li>
+                    <li><strong>Injury by Height:</strong> I looked at how player height relates to injury rates to see if certain physical builds are more prone to injuries.</li>
+                    <li><strong>Most Common Injuries:</strong> I tracked which types of injuries occur most frequently to understand what players are dealing with.</li>
+                    <li><strong>Player Profiles:</strong> I combined position, age, and height to create profiles that show which combinations of attributes lead to the highest injury counts.</li>
+                </ul>
+
+                <h2>Key Insights</h2>
+                <p>Here's what I discovered from analyzing the data:</p>
+                <ul>
+                    <li><strong>Centre-backs are the most injury-prone position:</strong> I found that centre-backs have over 3,000 injuries, which is significantly higher than any other position. The data shows that tall centre-backs aged 22-31 are especially at risk—they make up 7 out of 11 of the most injured player profiles.</li>
+                    <li><strong>Player height correlates with injury risk:</strong> I noticed that players in the mid-to-tall height ranges (178-189 cm) account for most injuries. The 178-183 cm range has the highest count at 4,985 injuries, which suggests that certain physical builds might be more susceptible to getting hurt.</li>
+                    <li><strong>Injury risk peaks at specific career stages:</strong> I discovered that injury rates are consistently high for players in their early to late twenties (22-30), with injuries hitting a peak during this period. There's also another significant surge around age 35, which highlights critical periods in a player's career where injury prevention strategies might be most important.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="social-footer">
+        <div class="social-links">
+            <a href="https://github.com/lUIZhMACEDO" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-github fa-2x"></i></a>
+            <a href="https://www.linkedin.com/in/luiz-macedo-cs1/" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin fa-2x"></i></a>
+            <a href="mailto:luizhmacedo0@gmail.com" class="social-icon"><i class="fas fa-envelope fa-2x"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

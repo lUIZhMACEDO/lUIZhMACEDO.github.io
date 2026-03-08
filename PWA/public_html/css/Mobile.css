@@ -1,0 +1,23 @@
+
+@media (max-width: 768px) {
+    .fixed-date {
+        top: 200px; 
+    }
+
+    .container {
+        padding-top: 400px; 
+    }
+
+@media (max-width: 768px) {
+    .weather h3, .weather h4 {
+        font-size: 2em; 
+    display: inline-block; 
+    margin-right: 10px; 
+}
+
+@media (max-width: 768px){}
+    .weather h4 {
+    margin-left: 10px;
+}
+}
+}
