@@ -1295,12 +1295,6 @@ footer {
     overflow-wrap: break-word;
 }
 
-.project-description table {
-    max-width: 100%;
-    overflow-x: auto;
-    display: block;
-}
-
 .project-description li {
     margin-bottom: 0.5rem;
     color: white;
