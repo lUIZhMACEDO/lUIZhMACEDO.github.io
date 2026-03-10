@@ -9,12 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .app-embed-section {
-            width: 100vw;
-            margin-left: 50%;
-            transform: translateX(-50%);
-            padding: 2rem 0;
+            width: 100%;
+            max-width: 100vw;
+            padding: 2rem 1rem;
             background: #0b0e11;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         .app-embed-section h3 {
             text-align: center;
@@ -40,6 +39,16 @@
             border: 2px solid #1e2533;
             border-radius: 12px;
             background: #0b0e11;
+        }
+        @media (max-width: 768px) {
+            .app-embed-section { padding: 1.5rem 0.75rem; }
+            .app-embed-section h3 { font-size: 1.4rem; }
+            .app-embed-section p { font-size: 0.9rem; padding: 0 0.5rem; }
+            .app-embed-section iframe { height: 600px; min-height: 500px; }
+        }
+        @media (max-width: 480px) {
+            .app-embed-section { padding: 1rem 0.5rem; }
+            .app-embed-section iframe { height: 550px; min-height: 450px; }
         }
         .tech-stack {
             display: flex;
@@ -120,7 +129,6 @@
             transform: translateY(-2px);
         }
         @media (max-width: 768px) {
-            .app-embed-section iframe { height: 600px; }
             .feature-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -154,7 +162,7 @@
         <div class="project-content">
             <div class="project-description">
                 <h2>Overview</h2>
-                <p>I built this full-stack stock analysis platform that lets anyone enter their portfolio and instantly receive institutional-grade analysis. Users input their stock tickers, share counts, and average costs, then the system pulls live data from multiple financial APIs to generate personalized BUY/SELL/HOLD signals, compute technical indicators, fetch analyst ratings, assess portfolio risk, and deliver a full professional report to their email. The public app shows only the Analyze Stocks flow—visitors enter their own data with no access to any personal portfolio.</p>
+                <p>I got tired of checking my portfolio manually and flipping between Yahoo Finance and a spreadsheet. So I built this: you drop in your tickers, shares, and average cost, and it tells you what to buy, hold, or trim. It pulls live data, runs technicals like RSI and MACD, grabs analyst ratings, and can even email you a full report every morning. The public version is read-only—you enter your own data and nothing gets saved. Try it below.</p>
 
                 <h2>Tech Stack</h2>
                 <div class="tech-stack">
