@@ -15,11 +15,12 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">Portfolio</div>
+        <a href="index.html" class="logo">Luiz Macedo</a>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="projects.html" class="active">Projects</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
         <div class="mobile-menu">
             <div class="menu-icon">
@@ -31,6 +32,7 @@
                 <a href="index.html">Home</a>
                 <a href="projects.html" class="active">Projects</a>
                 <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
             </div>
         </div>
     </nav>
@@ -101,6 +103,34 @@
 
             <div class="back-button">
                 <a href="projects.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-content">
+            <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="contact" />
+                <p class="hidden">
+                    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                </p>
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <div class="social-links contact-social">
+                <a href="https://github.com/lUIZhMACEDO" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-github fa-2x"></i></a>
+                <a href="https://www.linkedin.com/in/luiz-macedo-cs1/" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin fa-2x"></i></a>
+                <a href="mailto:luizhmacedo0@gmail.com" class="social-icon"><i class="fas fa-envelope fa-2x"></i></a>
             </div>
         </div>
     </section>

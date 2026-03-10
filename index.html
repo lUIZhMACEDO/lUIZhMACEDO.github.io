@@ -79,14 +79,14 @@
                 </a>
             </div>
             <div class="project-card">
-                <a href="projects/candlesite/index.html">
-                    <div class="project-card-candle-visual">
-                        <i class="fas fa-fire"></i>
-                        <span class="project-card-candle-title">Luz e Aroma</span>
-                        <span class="project-card-candle-badge">CANDLE SITE</span>
+                <a href="DBproject.html">
+                    <div class="project-card-db-visual">
+                        <i class="fas fa-database"></i>
+                        <span class="project-card-db-title">Premier League DB</span>
+                        <span class="project-card-db-badge">SQL DATABASE</span>
                     </div>
-                    <h3>Luz e Aroma</h3>
-                    <p>A friend of mine makes candles by hand and needed a site to show them off. I built her a clean, simple page where she can showcase her work and take orders through Instagram.</p>
+                    <h3>Premier League Database</h3>
+                    <p>I love soccer stats. So I built a SQL database with every Premier League match since 1992—20,000+ games. Custom functions, triggers, and queries to answer stuff like "who's best at home?" or "biggest away wins."</p>
                 </a>
             </div>
         </div>
@@ -118,6 +118,34 @@
                     <h3>Programming Languages</h3>
                     <canvas id="languagesChart"></canvas>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-content">
+            <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="contact" />
+                <p class="hidden">
+                    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                </p>
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <div class="social-links contact-social">
+                <a href="https://github.com/lUIZhMACEDO" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-github fa-2x"></i></a>
+                <a href="https://www.linkedin.com/in/luiz-macedo-cs1/" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin fa-2x"></i></a>
+                <a href="mailto:luizhmacedo0@gmail.com" class="social-icon"><i class="fas fa-envelope fa-2x"></i></a>
             </div>
         </div>
     </section>

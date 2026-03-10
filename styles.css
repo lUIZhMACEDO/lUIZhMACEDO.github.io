@@ -303,7 +303,8 @@ body {
     margin-bottom: 1rem;
     color: white;
     font-weight: bold;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-word;
 }
 
 .hero-content .name-line {
@@ -645,6 +646,36 @@ body {
 }
 
 .project-card-article-badge {
+    font-size: 11px;
+    color: #93c5fd;
+    margin-top: 4px;
+}
+
+/* Premier League Database card visual */
+.project-card-db-visual {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #1a2744, #243b6e);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.project-card-db-visual i {
+    font-size: 48px;
+    color: #3b82f6;
+    margin-bottom: 12px;
+}
+
+.project-card-db-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.project-card-db-badge {
     font-size: 11px;
     color: #93c5fd;
     margin-top: 4px;
@@ -2125,10 +2156,26 @@ footer {
         order: 2;
     }
 
+    .hero-content .hello-world {
+        font-size: 2rem;
+    }
+
+    .hero-content .name-line {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1.3rem;
+    }
+
+    .typing-text {
+        font-size: 1.3rem;
+    }
+
     .hero-image {
         order: 1;
         margin-bottom: 2rem;
-        padding-right: 2rem;
+        padding-right: 0;
     }
 
     .hero-image::before {
@@ -2153,8 +2200,24 @@ footer {
         width: 80%;
     }
 
+    .hero-content .hello-world {
+        font-size: 1.6rem;
+    }
+
+    .hero-content .name-line {
+        font-size: 1.4rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .typing-text {
+        font-size: 1.1rem;
+    }
+
     .hero-image {
-        padding-right: 1rem;
+        padding-right: 0;
     }
 
     .hero-image::before {
