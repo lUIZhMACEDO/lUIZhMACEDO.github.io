@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI Stock Analyst - A full-stack portfolio analysis tool with technical indicators, signals, and automated email reports.">
-    <title>AI Stock Analyst - Luiz Macedo Portfolio</title>
-    <meta property="og:title" content="AI Stock Analyst - Luiz Macedo Portfolio">
-    <meta property="og:description" content="Full-stack stock analysis tool with BUY/SELL/HOLD signals, technical indicators, and email reports.">
-    <meta property="og:image" content="https://luizhmacedo.github.io/assets/images/Transparent_Luiz.png">
-    <meta property="og:url" content="https://luizhmacedo.github.io/stock-analyst.html">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="description" content="Stock Analyst - A full-stack portfolio analysis tool with technical indicators, signals, and automated email reports.">
+    <title>Stock Analyst - Luiz Macedo Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -89,6 +84,41 @@
             font-size: 0.85rem;
             line-height: 1.5;
         }
+        .project-links {
+            display: flex;
+            gap: 16px;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: #f0b90b;
+            color: #0b0e11;
+        }
+        .btn-primary:hover {
+            background: #d4a30a;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid #1e2533;
+        }
+        .btn-secondary:hover {
+            border-color: #f0b90b;
+            color: #f0b90b;
+            transform: translateY(-2px);
+        }
         @media (max-width: 768px) {
             .app-embed-section iframe { height: 600px; }
             .feature-grid { grid-template-columns: 1fr; }
@@ -97,12 +127,11 @@
 </head>
 <body>
     <nav class="navbar">
-        <a href="index.html" class="logo">Luiz Macedo</a>
+        <div class="logo">Luiz Macedo</div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="projects.html" class="active">Projects</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
         </ul>
         <div class="mobile-menu">
             <div class="menu-icon">
@@ -114,7 +143,6 @@
                 <a href="index.html">Home</a>
                 <a href="projects.html" class="active">Projects</a>
                 <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
             </div>
         </div>
     </nav>
@@ -122,7 +150,7 @@
     <canvas id="data-particles"></canvas>
 
     <section class="project-detail">
-        <h1>AI Stock Analyst</h1>
+        <h1>Stock Analyst</h1>
         <div class="project-content">
             <div class="project-description">
                 <h2>Overview</h2>
@@ -139,6 +167,7 @@
                     <span class="tech-tag">TA-Lib</span>
                     <span class="tech-tag">Google News RSS</span>
                     <span class="tech-tag">SMTP / Gmail</span>
+                    <span class="tech-tag">GitHub Actions</span>
                     <span class="tech-tag">Streamlit Cloud</span>
                     <span class="tech-tag">Plotly</span>
                 </div>
@@ -152,7 +181,7 @@
                     <iframe src="https://ai-stock-analyst-1.streamlit.app/?embedded=true"
                             allow="clipboard-write"
                             loading="lazy"
-                            title="AI Stock Analyst"></iframe>
+                            title="Stock Analyst"></iframe>
                 </div>
             </section>
 
@@ -162,32 +191,32 @@
                     <div class="feature-card">
                         <i class="fas fa-signal"></i>
                         <h4>Smart Signals</h4>
-                        <p>Per-ticker BUY/SELL/HOLD/TRIM signals based on P&L thresholds, PE ratios, RSI levels, and 52-week positioning.</p>
+                        <p>Per-ticker BUY/SELL/HOLD/TRIM signals based on P&L thresholds, PE ratios, RSI levels, 52-week positioning, and ticker-specific strategies for different asset classes.</p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-chart-bar"></i>
                         <h4>Technical Indicators</h4>
-                        <p>Real-time RSI, MACD, Bollinger Bands, EMA crossovers, ATR-based stop-loss and target levels.</p>
+                        <p>Real-time RSI, MACD, Bollinger Bands, EMA 20/50 crossovers, ATR-based stop-loss and target levels, and volume analysis vs 20-day average.</p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-users"></i>
                         <h4>Analyst Ratings</h4>
-                        <p>Buy/Hold/Sell counts, consensus price targets, and insider transaction tracking via Finnhub.</p>
+                        <p>Aggregated Buy/Hold/Sell counts from Wall Street analysts, consensus price targets (low/mean/high), and 30-day insider buy/sell transaction tracking via Finnhub.</p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-shield-alt"></i>
                         <h4>Risk Dashboard</h4>
-                        <p>Portfolio beta, sector exposure, per-position risk, and 95% Value at Risk (VaR).</p>
+                        <p>Portfolio-level weighted beta, sector exposure breakdown, per-position 1-day risk, and 95% Value at Risk (VaR) calculation using historical volatility.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h4>Timeline Analysis</h4>
+                        <p>Short-term (0-30d), medium-term (1-6mo), and long-term (6-24mo) outlook with support/resistance levels, earnings catalysts, and invalidation triggers.</p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-envelope"></i>
                         <h4>Email Reports</h4>
-                        <p>Full HTML report delivered to the user's inbox with charts, signals, technicals, and risk data.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-coins"></i>
-                        <h4>Crypto Tab</h4>
-                        <p>Fear & Greed Index, live BTC/ETH/SOL/BNB/XRP prices, and technical indicators.</p>
+                        <p>Full HTML report delivered to the user's inbox with the same dark-themed professional layout, including all charts, signals, technicals, and risk data.</p>
                     </div>
                     <div class="feature-card">
                         <i class="fas fa-coins"></i>
@@ -195,15 +224,39 @@
                         <p>Fear & Greed Index, live BTC/ETH/SOL/BNB/XRP prices, and technical indicators for major cryptocurrencies.</p>
                     </div>
                 </div>
+
+                <h2>How It Works</h2>
+                <p>The system pulls data from multiple sources with automatic fallbacks:</p>
+                <ul>
+                    <li><strong>Yahoo Finance (yfinance):</strong> Live prices, historical OHLCV data, company fundamentals (PE, market cap, 52-week range), and earnings dates.</li>
+                    <li><strong>Finnhub API:</strong> Analyst consensus recommendations, price targets, insider transactions, earnings calendar, and general market news with rate limiting.</li>
+                    <li><strong>Google News RSS:</strong> Deduplicated headlines per ticker and macro-level news scanning with keyword-based risk flagging for portfolio-relevant events.</li>
+                    <li><strong>TA Library:</strong> RSI (14-period), MACD (12/26/9), Bollinger Bands (20, 2-std), EMA 20/50 crossovers, and ATR (14-period) computed from 6-month daily history.</li>
+                </ul>
+                <p>All data is cached for 30 minutes, API calls include timeout handling and graceful degradation, and Finnhub requests are rate-limited at 0.3s intervals to respect free-tier limits.</p>
+
+                <h2>Architecture</h2>
+                <ul>
+                    <li><strong>main.py</strong> -- Core analysis engine: 1,200+ lines handling data fetching, caching, indicator computation, signal generation, trade strategy detection, risk math, and HTML email builder.</li>
+                    <li><strong>app.py</strong> -- Streamlit frontend: Public-facing input form, portfolio analysis, interactive dashboard with 4 tabs (Portfolio, Trade Ideas, Technicals, Risk & News), and email delivery.</li>
+                    <li><strong>GitHub Actions</strong> -- Automated CI/CD: Daily scheduled runs (Mon-Fri 7:30 AM EST) that execute the full analysis pipeline and send email reports without requiring the host machine.</li>
+                    <li><strong>Streamlit Cloud</strong> -- Zero-config deployment: Connected to the GitHub repo for automatic deploys on every push, with secrets managed through the platform.</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <footer class="social-footer">
         <div class="social-links">
-            <a href="https://github.com/lUIZhMACEDO" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-github fa-2x"></i></a>
-            <a href="https://www.linkedin.com/in/luiz-macedo-cs1/" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin fa-2x"></i></a>
-            <a href="mailto:luizhmacedo0@gmail.com" class="social-icon"><i class="fas fa-envelope fa-2x"></i></a>
+            <a href="https://github.com/lUIZhMACEDO" target="_blank" class="social-icon">
+                <i class="fab fa-github fa-2x"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/luiz-macedo-cs1/" target="_blank" class="social-icon">
+                <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a href="mailto:luizhmacedo0@gmail.com" class="social-icon">
+                <i class="fas fa-envelope fa-2x"></i>
+            </a>
         </div>
     </footer>
 
