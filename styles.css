@@ -15,7 +15,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: white;
-    background-color: rgba(40,40,40,255);
+    background-color: #020202;
     width: 100%;
     overflow-x: hidden;
 }
@@ -29,7 +29,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    background-color: rgba(40,40,40,0.95);
+    background-color: rgba(2,2,2,0.95);
     box-shadow: none;
     z-index: 1000;
     backdrop-filter: blur(10px);
@@ -49,7 +49,7 @@ body {
 }
 
 .navbar.scrolled {
-    background-color: rgba(40,40,40,0.98);
+    background-color: rgba(2,2,2,0.98);
     box-shadow: none;
     transition: all 0.3s ease;
 }
@@ -170,7 +170,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: rgba(40,40,40,255);
+    background: #020202;
     color: white;
     padding: 0 1rem;
     position: relative;
@@ -299,11 +299,12 @@ body {
 }
 
 .hero-content .hello-world {
-    font-size: 5rem;
+    font-size: clamp(2rem, 5vw, 5rem);
     margin-bottom: 1rem;
     color: white;
     font-weight: bold;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
 }
 
 .hero-content .name-line {
@@ -377,7 +378,7 @@ body {
 /* About Section */
 .about {
     padding: 5rem 10%;
-    background-color: rgba(40,40,40,255);
+    background-color: #020202;
 }
 
 .about h2 {
@@ -1198,14 +1199,14 @@ footer {
 }
 
 .projects, .contact {
-    background-color: rgba(40,40,40,255);
+    background-color: #020202;
 }
 
 .project-detail {
     padding: 80px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: rgba(40,40,40,255);
+    background-color: #020202;
     animation: fadeInUp 0.8s ease-out;
     position: relative;
     z-index: 1;
@@ -1420,7 +1421,7 @@ footer {
 
 .about-section {
     padding: 120px 20px 60px;
-    background-color: rgba(40,40,40,255);
+    background-color: #020202;
     min-height: 100vh;
     position: relative;
     overflow: hidden;
@@ -2176,7 +2177,7 @@ footer {
 /* Data Stats Section */
 .data-stats-section {
     padding: 80px 20px;
-    background: linear-gradient(135deg, rgba(40,40,40,255) 0%, rgba(30,30,30,255) 100%);
+    background: linear-gradient(135deg, #020202 0%, #050505 100%);
     position: relative;
     overflow: hidden;
 }
@@ -2389,7 +2390,7 @@ footer {
 /* Data Visualization Section */
 .data-viz-section {
     padding: 80px 20px;
-    background: rgba(40,40,40,255);
+    background: #020202;
     position: relative;
 }
 
@@ -2779,12 +2780,13 @@ footer {
     border-radius: 8px;
 }
 
-/* FORCE horizontal scroll for Tableau on mobile */
-html, body {
+/* FORCE horizontal scroll for Tableau on mobile (injury dashboard page only) */
+.injury-page {
     overflow-x: visible !important;
 }
 
-.project-detail, .project-content {
+.injury-page .project-detail,
+.injury-page .project-content {
     overflow-x: visible !important;
 }
 
