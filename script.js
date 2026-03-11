@@ -177,10 +177,10 @@ function createCharts() {
     if (languagesCtx) {
         new Chart(languagesCtx, {
             type: 'doughnut',
-            data: {
+                data: {
                 labels: ['Python', 'SQL', 'HTML/CSS', 'JavaScript', 'Java'],
                 datasets: [{
-                    data: [30, 25, 25, 12, 8],
+                    data: [20, 20, 20, 20, 20],
                     backgroundColor: [
                         'rgba(255, 255, 0, 0.8)',      // Python - Yellow
                         'rgba(100, 150, 255, 0.8)',    // SQL - Blue
@@ -290,17 +290,19 @@ const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
-        // Get form data
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
-        
-        // Here you would typically send the data to a server
-        console.log('Form submitted:', data);
-        
-        // Show success message
-        alert('Thank you for your message! I will get back to you soon.');
-        contactForm.reset();
+
+        const name = data.name || '';
+        const email = data.email || '';
+        const message = data.message || '';
+
+        const subject = encodeURIComponent('Portfolio contact form');
+        const body = encodeURIComponent(
+            `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+        );
+
+        window.location.href = `mailto:luizhmacedo0@gmail.com?subject=${subject}&body=${body}`;
     });
 }
 
