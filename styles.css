@@ -2041,17 +2041,23 @@ footer {
 .social-footer {
     position: fixed;
     bottom: 20px;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 15px;
-    border-radius: 30px;
-    margin: 0 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    background: rgba(6, 10, 16, 0.85);
+    padding: 14px 32px;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     animation: slideUp 0.8s ease-out;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(16px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-footer:hover {
+    border-color: rgba(6, 214, 160, 0.2);
+    box-shadow: 0 8px 40px rgba(6, 214, 160, 0.1);
 }
 
 @keyframes slideUp {
@@ -2074,13 +2080,14 @@ footer {
 .social-icon {
     color: var(--text-secondary);
     text-decoration: none;
-    transition: transform 0.3s ease, color 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease, filter 0.3s ease;
     font-size: 24px;
 }
 
 .social-icon:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px) scale(1.1);
     color: var(--accent);
+    filter: drop-shadow(0 0 8px rgba(6, 214, 160, 0.4));
 }
 
 /* Mobile Navigation */
@@ -2899,4 +2906,64 @@ footer {
     #tableau-viz-container {
         height: 980px !important;
     }
-} 
+}
+
+/* Custom Cursor (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+    .cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        background: var(--accent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.1s ease;
+        mix-blend-mode: screen;
+    }
+
+    .cursor-ring {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 32px;
+        height: 32px;
+        border: 1.5px solid rgba(6, 214, 160, 0.4);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+    }
+
+    .cursor-ring.hovering {
+        width: 48px;
+        height: 48px;
+        border-color: var(--accent);
+    }
+}
+
+/* Page Transition Overlay */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-primary);
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.page-transition.active {
+    opacity: 1;
+}
+
+/* Revealed state for scroll animations */
+.revealed {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+}
