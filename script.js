@@ -32,85 +32,146 @@ window.addEventListener('load', () => {
     }
 });
 
-// Particle Effect for Hero Section
+// Three.js Particle Effect for Hero Section
 function initParticles() {
     const canvas = document.getElementById('data-particles');
+    if (!canvas || typeof THREE === 'undefined') {
+        // Fallback: basic 2D particles if Three.js not loaded
+        initParticlesFallback();
+        return;
+    }
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const particleCount = 300;
+    const positions = new Float32Array(particleCount * 3);
+    const velocities = [];
+    const spread = 20;
+
+    for (let i = 0; i < particleCount; i++) {
+        positions[i * 3] = (Math.random() - 0.5) * spread;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * spread;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * spread;
+        velocities.push({
+            x: (Math.random() - 0.5) * 0.005,
+            y: (Math.random() - 0.5) * 0.005,
+            z: (Math.random() - 0.5) * 0.005
+        });
+    }
+
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    const material = new THREE.PointsMaterial({
+        color: 0x06d6a0,
+        size: 0.05,
+        transparent: true,
+        opacity: 0.7,
+        blending: THREE.AdditiveBlending,
+        sizeAttenuation: true
+    });
+
+    const points = new THREE.Points(geometry, material);
+    scene.add(points);
+
+    // Connection lines
+    const lineMaterial = new THREE.LineBasicMaterial({
+        color: 0x06d6a0,
+        transparent: true,
+        opacity: 0.08,
+        blending: THREE.AdditiveBlending
+    });
+
+    camera.position.z = 8;
+
+    let mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+    });
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        const pos = geometry.attributes.position.array;
+        for (let i = 0; i < particleCount; i++) {
+            pos[i * 3] += velocities[i].x;
+            pos[i * 3 + 1] += velocities[i].y;
+            pos[i * 3 + 2] += velocities[i].z;
+
+            // Wrap particles
+            for (let j = 0; j < 3; j++) {
+                if (pos[i * 3 + j] > spread / 2) pos[i * 3 + j] = -spread / 2;
+                if (pos[i * 3 + j] < -spread / 2) pos[i * 3 + j] = spread / 2;
+            }
+        }
+        geometry.attributes.position.needsUpdate = true;
+
+        // Respond to mouse
+        points.rotation.x += (mouseY * 0.1 - points.rotation.x) * 0.02;
+        points.rotation.y += (mouseX * 0.1 - points.rotation.y) * 0.02;
+        points.rotation.z += 0.0003;
+
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+}
+
+// Fallback 2D particles (for pages without Three.js)
+function initParticlesFallback() {
+    const canvas = document.getElementById('data-particles');
     if (!canvas) return;
-    
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    
+
     const particles = [];
-    const particleCount = 50;
-    
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2 + 1;
-            this.speedX = Math.random() * 0.5 - 0.25;
-            this.speedY = Math.random() * 0.5 - 0.25;
-            this.opacity = Math.random() * 0.5 + 0.2;
-        }
-        
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-            
-            if (this.x > canvas.width) this.x = 0;
-            if (this.x < 0) this.x = canvas.width;
-            if (this.y > canvas.height) this.y = 0;
-            if (this.y < 0) this.y = canvas.height;
-        }
-        
-        draw() {
-            ctx.fillStyle = `rgba(6, 214, 160, ${this.opacity})`;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
+    for (let i = 0; i < 50; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2 + 1,
+            speedX: (Math.random() - 0.5) * 0.5,
+            speedY: (Math.random() - 0.5) * 0.5,
+            opacity: Math.random() * 0.5 + 0.2
+        });
     }
-    
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
-    
+
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
+        particles.forEach(p => {
+            p.x += p.speedX; p.y += p.speedY;
+            if (p.x > canvas.width) p.x = 0; if (p.x < 0) p.x = canvas.width;
+            if (p.y > canvas.height) p.y = 0; if (p.y < 0) p.y = canvas.height;
+            ctx.fillStyle = `rgba(6, 214, 160, ${p.opacity})`;
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
         });
-        
-        // Draw connections
-        particles.forEach((particle, i) => {
-            particles.slice(i + 1).forEach(otherParticle => {
-                const dx = particle.x - otherParticle.x;
-                const dy = particle.y - otherParticle.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                
-                if (distance < 150) {
-                    ctx.strokeStyle = `rgba(6, 214, 160, ${0.1 * (1 - distance / 150)})`;
-                    ctx.lineWidth = 1;
-                    ctx.beginPath();
-                    ctx.moveTo(particle.x, particle.y);
-                    ctx.lineTo(otherParticle.x, otherParticle.y);
-                    ctx.stroke();
+        particles.forEach((p, i) => {
+            particles.slice(i + 1).forEach(q => {
+                const d = Math.hypot(p.x - q.x, p.y - q.y);
+                if (d < 150) {
+                    ctx.strokeStyle = `rgba(6, 214, 160, ${0.1 * (1 - d / 150)})`;
+                    ctx.lineWidth = 1; ctx.beginPath();
+                    ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
                 }
             });
         });
-        
         requestAnimationFrame(animate);
     }
-    
     animate();
-    
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
+    window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 }
 
 // Animated Counter
