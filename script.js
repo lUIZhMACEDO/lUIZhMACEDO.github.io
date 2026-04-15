@@ -466,8 +466,8 @@ function initCustomCursor() {
 // Enhanced scroll animations with staggered reveals
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll(
-        '.project-card, .about-content, .contact-content, .about-block, .skill-item, ' +
-        '.stat-card-large, .chart-card, .projects h2, .data-stats-section, section > h2'
+        '.project-card, .about-content, .about-block, .skill-item, ' +
+        '.stat-card-large, .chart-card, .projects h2, .data-stats-section'
     );
 
     const observer = new IntersectionObserver((entries) => {
