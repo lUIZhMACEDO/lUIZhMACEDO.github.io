@@ -427,41 +427,7 @@ function initPageTransition() {
     });
 }
 
-// Custom Cursor (desktop only)
-function initCustomCursor() {
-    if (window.matchMedia('(hover: none)').matches || window.matchMedia('(pointer: coarse)').matches) return;
-
-    const dot = document.createElement('div');
-    dot.className = 'cursor-dot';
-    const ring = document.createElement('div');
-    ring.className = 'cursor-ring';
-    document.body.appendChild(dot);
-    document.body.appendChild(ring);
-
-    let mx = 0, my = 0, rx = 0, ry = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mx = e.clientX; my = e.clientY;
-        dot.style.transform = `translate(${mx - 3}px, ${my - 3}px)`;
-    });
-
-    function followCursor() {
-        rx += (mx - rx) * 0.35;
-        ry += (my - ry) * 0.35;
-        ring.style.transform = `translate(${rx - 16}px, ${ry - 16}px)`;
-        requestAnimationFrame(followCursor);
-    }
-    followCursor();
-
-    document.querySelectorAll('a, button, .project-card, .skill-item, .cta-button').forEach(el => {
-        el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
-        el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
-    });
-
-    // Hide default cursor
-    document.documentElement.style.cursor = 'none';
-    document.querySelectorAll('a, button').forEach(el => { el.style.cursor = 'none'; });
-}
+// Custom cursor removed — kept default browser cursor
 
 // Enhanced scroll animations with staggered reveals
 function initScrollAnimations() {
@@ -627,8 +593,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize hero parallax
     initHeroParallax();
 
-    // Initialize custom cursor
-    initCustomCursor();
 
     // Animate skill bars on scroll
     initSkillBars();
