@@ -356,30 +356,84 @@ function initPageTransition() {
     });
 }
 
-// Enhanced scroll animations for all pages
+// Enhanced scroll animations with staggered reveals
 function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.project-card, .about-content, .contact-content, .about-block, .skill-item');
-    
+    const animatedElements = document.querySelectorAll(
+        '.project-card, .about-content, .contact-content, .about-block, .skill-item, ' +
+        '.stat-card-large, .chart-card, .projects h2, .data-stats-section, section > h2'
+    );
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
                 entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0) scale(1)';
+                entry.target.style.transform = 'translateY(0) scale(1) rotateY(0deg)';
             }
         });
     }, {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: '0px 0px -60px 0px'
     });
-    
-    animatedElements.forEach(element => {
-        // Only set initial state if not already animated by CSS
+
+    animatedElements.forEach((element, index) => {
         if (!element.classList.contains('skill-item') && !element.classList.contains('about-block')) {
             element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            element.style.transform = 'translateY(40px)';
+            element.style.transition = `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${(index % 4) * 0.1}s, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${(index % 4) * 0.1}s`;
         }
         observer.observe(element);
+    });
+}
+
+// 3D Tilt Effect for Project Cards
+function initCardTilt() {
+    const cards = document.querySelectorAll('.project-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / centerY * -6;
+            const rotateY = (x - centerX) / centerX * 6;
+
+            card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px) scale(1.02)`;
+            card.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2}px 30px rgba(6, 214, 160, 0.2)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
+            card.style.boxShadow = '';
+            card.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease';
+        });
+
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'transform 0.1s ease, box-shadow 0.1s ease';
+        });
+    });
+}
+
+// Hero Parallax on Mouse Move
+function initHeroParallax() {
+    const hero = document.querySelector('.hero');
+    const heroImage = document.querySelector('.hero-image img');
+    if (!hero || !heroImage) return;
+
+    hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+        heroImage.style.transform = `translate(${x * 15}px, ${y * 15}px)`;
+        heroImage.style.transition = 'transform 0.15s ease-out';
+    });
+
+    hero.addEventListener('mouseleave', () => {
+        heroImage.style.transform = 'translate(0, 0)';
+        heroImage.style.transition = 'transform 0.4s ease-out';
     });
 }
 
@@ -441,6 +495,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize lightbox
     initLightbox();
     
+    // Initialize card tilt
+    initCardTilt();
+
+    // Initialize hero parallax
+    initHeroParallax();
+
     // Initialize new features (only on index.html)
     if (document.getElementById('data-particles')) {
         initParticles();

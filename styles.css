@@ -165,9 +165,8 @@ body {
 }
 
 .nav-links a:hover {
-    transform: translateY(-1px);
     color: var(--accent);
-    transition: all 0.4s ease;
+    transition: color 0.3s ease;
 }
 
 .nav-links a::after {
@@ -176,9 +175,11 @@ body {
     width: 0;
     height: 2px;
     bottom: -5px;
-    left: 0;
-    background-color: var(--accent);
-    transition: width 0.3s ease;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, var(--accent), var(--secondary));
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 1px;
 }
 
 .nav-links a:hover::after,
@@ -835,10 +836,9 @@ body {
 }
 
 .project-card:hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 12px 30px rgba(6, 214, 160, 0.25);
-    border: 1px solid rgba(6, 214, 160, 0.4);
-    background: rgba(255, 255, 255, 0.13);
+    box-shadow: 0 12px 40px rgba(6, 214, 160, 0.2), 0 0 0 1px rgba(6, 214, 160, 0.3);
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
 }
 
 .project-link {
@@ -1692,13 +1692,29 @@ footer {
     width: 60px;
     height: 60px;
     object-fit: contain;
-    transition: transform 0.8s ease, filter 0.8s ease;
+    transition: transform 0.4s ease, filter 0.4s ease;
     filter: drop-shadow(0 0 5px rgba(6, 214, 160, 0.3));
+    animation: skillFloat 3s ease-in-out infinite;
+}
+
+.skill-item:nth-child(1) img { animation-delay: 0s; }
+.skill-item:nth-child(2) img { animation-delay: 0.3s; }
+.skill-item:nth-child(3) img { animation-delay: 0.6s; }
+.skill-item:nth-child(4) img { animation-delay: 0.9s; }
+.skill-item:nth-child(5) img { animation-delay: 1.2s; }
+.skill-item:nth-child(6) img { animation-delay: 1.5s; }
+.skill-item:nth-child(7) img { animation-delay: 1.8s; }
+.skill-item:nth-child(8) img { animation-delay: 2.1s; }
+.skill-item:nth-child(9) img { animation-delay: 2.4s; }
+
+@keyframes skillFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
 }
 
 .skill-item:hover img {
-    transform: scale(1.1) rotate(180deg);
-    filter: drop-shadow(0 0 10px rgba(6, 214, 160, 0.5));
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 0 16px rgba(6, 214, 160, 0.6));
 }
 
 .skill-icon-custom {
@@ -1712,8 +1728,8 @@ footer {
 }
 
 .skill-item:hover .skill-icon-custom {
-    transform: scale(1.1) rotate(180deg);
-    filter: drop-shadow(0 0 10px rgba(6, 214, 160, 0.5));
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 0 16px rgba(6, 214, 160, 0.6));
 }
 
 .skill-icon-custom svg {
