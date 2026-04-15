@@ -193,7 +193,7 @@ function animateCounter(element, target, duration = 2000) {
 
 // Intersection Observer for Counter Animation
 function initCounters() {
-    const statCards = document.querySelectorAll('.stat-card, .stat-card-large');
+    const statCards = document.querySelectorAll('.stat-card, .stat-card-large, .stat-pill');
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -446,8 +446,8 @@ function initCustomCursor() {
     });
 
     function followCursor() {
-        rx += (mx - rx) * 0.15;
-        ry += (my - ry) * 0.15;
+        rx += (mx - rx) * 0.35;
+        ry += (my - ry) * 0.35;
         ring.style.transform = `translate(${rx - 16}px, ${ry - 16}px)`;
         requestAnimationFrame(followCursor);
     }
@@ -521,6 +521,25 @@ function initCardTilt() {
             card.style.transition = 'transform 0.1s ease, box-shadow 0.1s ease';
         });
     });
+}
+
+// Skill Bars Animation
+function initSkillBars() {
+    const bars = document.querySelectorAll('.skill-bar-fill');
+    if (!bars.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
+                observer.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    bars.forEach(bar => observer.observe(bar));
 }
 
 // Hero Parallax on Mouse Move
@@ -611,11 +630,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize custom cursor
     initCustomCursor();
 
+    // Animate skill bars on scroll
+    initSkillBars();
+
     // Initialize new features (only on index.html)
     if (document.getElementById('data-particles')) {
         initParticles();
     }
-    if (document.querySelector('.stat-card') || document.querySelector('.stat-card-large')) {
+    if (document.querySelector('.stat-card') || document.querySelector('.stat-card-large') || document.querySelector('.stat-pill')) {
         initCounters();
     }
     if (document.getElementById('languagesChart')) {
