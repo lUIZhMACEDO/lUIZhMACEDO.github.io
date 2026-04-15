@@ -65,7 +65,7 @@ function initParticles() {
         }
         
         draw() {
-            ctx.fillStyle = `rgba(255, 255, 0, ${this.opacity})`;
+            ctx.fillStyle = `rgba(6, 214, 160, ${this.opacity})`;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
@@ -92,7 +92,7 @@ function initParticles() {
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
                 if (distance < 150) {
-                    ctx.strokeStyle = `rgba(255, 255, 0, ${0.1 * (1 - distance / 150)})`;
+                    ctx.strokeStyle = `rgba(6, 214, 160, ${0.1 * (1 - distance / 150)})`;
                     ctx.lineWidth = 1;
                     ctx.beginPath();
                     ctx.moveTo(particle.x, particle.y);
@@ -182,14 +182,14 @@ function createCharts() {
                 datasets: [{
                     data: [20, 20, 20, 20, 20],
                     backgroundColor: [
-                        'rgba(255, 255, 0, 0.8)',      // Python - Yellow
+                        'rgba(6, 214, 160, 0.8)',      // Python - Yellow
                         'rgba(100, 150, 255, 0.8)',    // SQL - Blue
                         'rgba(200, 100, 255, 0.8)',    // HTML/CSS - Purple
                         'rgba(0, 254, 186, 0.8)',      // JavaScript - Teal
                         'rgba(255, 100, 100, 0.8)'     // Java - Red
                     ],
                     borderColor: [
-                        'rgba(255, 255, 0, 1)',        // Python
+                        'rgba(6, 214, 160, 1)',        // Python
                         'rgba(100, 150, 255, 1)',      // SQL
                         'rgba(200, 100, 255, 1)',      // HTML/CSS
                         'rgba(0, 254, 186, 1)',        // JavaScript
@@ -236,7 +236,7 @@ function createCharts() {
                         backgroundColor: 'rgba(0, 0, 0, 0.8)',
                         titleColor: 'white',
                         bodyColor: 'white',
-                        borderColor: 'rgba(255, 255, 0, 0.5)',
+                        borderColor: 'rgba(6, 214, 160, 0.5)',
                         borderWidth: 1,
                         callbacks: {
                             label: function(context) {
