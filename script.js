@@ -408,13 +408,59 @@ function initNavbarScroll() {
 // Page transition animation
 function initPageTransition() {
     document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.3s ease-in';
-    
+    document.body.style.transition = 'opacity 0.4s ease-in';
+
     window.addEventListener('load', () => {
-        setTimeout(() => {
-            document.body.style.opacity = '1';
-        }, 100);
+        setTimeout(() => { document.body.style.opacity = '1'; }, 100);
     });
+
+    // Fade out on internal link clicks
+    document.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('http') && !link.getAttribute('target')) {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.style.opacity = '0';
+                setTimeout(() => { window.location.href = href; }, 300);
+            });
+        }
+    });
+}
+
+// Custom Cursor (desktop only)
+function initCustomCursor() {
+    if (window.matchMedia('(hover: none)').matches || window.matchMedia('(pointer: coarse)').matches) return;
+
+    const dot = document.createElement('div');
+    dot.className = 'cursor-dot';
+    const ring = document.createElement('div');
+    ring.className = 'cursor-ring';
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mx = e.clientX; my = e.clientY;
+        dot.style.transform = `translate(${mx - 3}px, ${my - 3}px)`;
+    });
+
+    function followCursor() {
+        rx += (mx - rx) * 0.15;
+        ry += (my - ry) * 0.15;
+        ring.style.transform = `translate(${rx - 16}px, ${ry - 16}px)`;
+        requestAnimationFrame(followCursor);
+    }
+    followCursor();
+
+    document.querySelectorAll('a, button, .project-card, .skill-item, .cta-button').forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+    });
+
+    // Hide default cursor
+    document.documentElement.style.cursor = 'none';
+    document.querySelectorAll('a, button').forEach(el => { el.style.cursor = 'none'; });
 }
 
 // Enhanced scroll animations with staggered reveals
@@ -561,6 +607,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize hero parallax
     initHeroParallax();
+
+    // Initialize custom cursor
+    initCustomCursor();
 
     // Initialize new features (only on index.html)
     if (document.getElementById('data-particles')) {
